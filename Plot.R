@@ -9,8 +9,8 @@ test <- read.csv("~/Data/labola/Monthly meeting/test.csv", sep=",", header = TRU
 #p <- autoplot(test, facet = NULL)
 #p
 attach(test)
-d <- data.frame(Month = Month, last_year= last_year, this_year = this_year )
+d <- data.frame(Month = Month, "2012"= last_year, "2013" = this_year )
 d <- melt(d ,  id = 'Month', variable_name = 'Year')
-ggplot(d, aes(Month, value)) + geom_line(aes(colour = Year))+scale_x_continuous(breaks=c(1:12))
-
+bp = ggplot(d, aes(Month, value)) + geom_line(aes(colour = Year))+scale_x_continuous(breaks=c(1:12))
+bp + ggtitle("Plant growth")
 
